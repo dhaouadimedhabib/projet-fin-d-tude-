@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+         <link  href="/src/style.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+      
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="../index.html">Start Bootstrap</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+               
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4 vertical">
+                <!-- Icône de notification -->
+                <li class="nav-item">
+                  <button class="nav-link" (click)="openNotificationsModal()">
+                    <i class="fas fa-bell fa-fw"></i> <!-- Notification icon -->
+                    <span class="badge bg-danger">{{ unreadNotificationCount }}</span> <!-- Notification badge -->
+                  </button>
+                </li>
+                
+                <!-- PrimeNG Dialog -->
+                <p-dialog [(visible)]="displayNotificationDialog" [modal]="true" [style]="{width: '350px'}" header="Notifications" [closable]="true">
+                  <div *ngFor="let notification of notifications" class="list-group list-group-flush my-n3">
+                    <div class="list-group-item bg-transparent">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <i class="fas fa-bell fa-fw fa-2x fa-beat-fade" style="color: #6874ec; --fa-animation-duration: 2s;"></i>   
+                        </div>
+                        <div class="col">
+                          <small><strong>{{ notification.title }}</strong></small>
+                          <small class="badge badge-pill badge-light text-muted">{{ notification.time }}</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <ng-template pTemplate="footer">
+                    <div class="pagination-controls">
+                      <button type="button" pButton icon="pi pi-angle-left" label="Previous" (click)="loadPreviousPage()" [disabled]="currentPage === 0"></button>
+                      <button type="button" pButton icon="pi pi-angle-right" label="Next" (click)="loadNextPage()" [disabled]="currentPage >= totalPages - 1"></button>
+                    </div>
+                    <button type="button" pButton icon="pi pi-times" label="Close" (click)="displayNotificationDialog = false"></button>
+                  </ng-template>
+                </p-dialog>
+                <li class="nav-item">
+                    <button class="nav-link" onclick="redirectToSettings()"><i class="fas fa-cog fa-fw"></i></button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" onclick="redirectToActivityLog()"><i class="fas fa-history fa-fw"></i></button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" (click)="logout()"><i class="bi bi-box-arrow-in-left"></i></button>
+              </li>
+                
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Interface</div>
+                            <a class="nav-link" routerLink="/plan" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Planning
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" routerLink="/listerdv" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Appoiment
+                            </a>
+                            <a class="nav-link" routerLink="/service" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-concierge-bell"></i></div>
+                                Service
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Addons</div>
+                            <a class="nav-link" routerLink="/update">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Profil
+                            </a>
+                            <a class="nav-link" routerLink="/service" href="tables.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a>
+                        </div>
+                    </div>
+                    
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+              <div class="card">
+                <p-toast></p-toast>
+                <p-toolbar styleClass="mb-4 gap-2">
+                    <ng-template pTemplate="left">
+                        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success" (click)="openNew()"></button>
+                        <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedUsers()" [disabled]="!selectedUsers || !selectedUsers.length"></button>
+                    </ng-template>
+            
+                    <ng-template pTemplate="right">
+                        <p-button pRipple severity="help" label="Export" icon="pi pi-upload"></p-button>
+                    </ng-template>
+                </p-toolbar>
+            
+                <p-table
+                    #dt
+                    [value]="users"
+                    [rows]="10"
+                    [paginator]="true"
+                    [globalFilterFields]="['username', 'email', 'role', 'firstName', 'lastName', 'numeroTel']"
+                    [(selection)]="selectedUsers"
+                    [rowHover]="true"
+                    dataKey="id"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true"
+                    [multiSortMeta]="multiSortMeta"
+                    [customSort]="true">
+                    
+                    <ng-template pTemplate="caption">
+                        <div class="flex align-items-center justify-content-between">
+                            <h5 class="m-0">Manage Users</h5>
+                            <span class="p-input-icon-left">
+                           
+                                <input 
+                                pInputText 
+                                type="text" 
+                                (input)="handleInput($event)" 
+                                placeholder="Search..." />
+                            </span>
+                        </div>
+                    </ng-template>
+            
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 4rem"><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
+                            <th pSortableColumn="username">Username <p-sortIcon field="username"></p-sortIcon></th>
+                            <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+                            <th pSortableColumn="role">Role <p-sortIcon field="role"></p-sortIcon></th>
+                            <th pSortableColumn="firstName">First Name <p-sortIcon field="firstName"></p-sortIcon></th>
+                            <th pSortableColumn="lastName">Last Name <p-sortIcon field="lastName"></p-sortIcon></th>
+                            <th pSortableColumn="numeroTel">Phone Number <p-sortIcon field="numeroTel"></p-sortIcon></th>
+                            <th>Image</th>
+                            <th></th>
+                        </tr>
+                    </ng-template>
+            
+                    <ng-template pTemplate="body" let-user>
+                        <tr>
+                            <td><p-tableCheckbox [value]="user"></p-tableCheckbox></td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.roles?.[0]?.roleName }}</td>
+                            <td>{{ user.firstName }}</td>
+                            <td>{{ user.lastName }}</td>
+                            <td>{{ user.numeroTel }}</td>
+                            <td>
+                              <p-avatar size="large" shape="circle" image="assets/{{ user.image }}" alt="User Image"></p-avatar>
+                            </td>               
+                            <td>
+                                <button pButton pRipple class="p-button p-button-success mr-2" (click)="editUser(user)"><i class="pi pi-pencil"></i></button>
+                                <button pButton pRipple class="p-button p-button-danger" (click)="deleteUser(user.userId)"><i class="pi pi-trash"></i></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+            
+                    <ng-template pTemplate="summary">
+                        <div class="flex align-items-center justify-content-between">In total there are {{ users ? users.length : 0 }} users.</div>
+                    </ng-template>
+                </p-table>
+            
+                <p-dialog header="User Details" [(visible)]="userDialog" [modal]="true" [style]="{width: '25vw'}" [closable]="false" [resizable]="false">
+                    <div *ngIf="user.image" class="text-center mb-4">
+                        <img [src]="'assets/' + user.image" alt="User Image" style="max-width: 150px; max-height: 100px;">
+                    </div>
+                    <form (ngSubmit)="saveUser()" #userForm="ngForm">
+                      <!-- Username -->
+                      <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" class="form-control" [(ngModel)]="user.username" name="username" required/>
+                      </div>
+                      <!-- First Name -->
+                      <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" class="form-control" [(ngModel)]="user.firstName" name="firstName" required />
+                      </div>
+                      <!-- Last Name -->
+                      <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" class="form-control" [(ngModel)]="user.lastName" name="lastName" required />
+                      </div>
+                      <!-- Email -->
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" [(ngModel)]="user.email" name="email" required />
+                      </div>
+                      <!-- Phone Number -->
+                      <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="tel" id="phoneNumber" class="form-control" [(ngModel)]="user.numeroTel" name="phoneNumber" required />
+                      </div>
+                      <!-- Role -->
+                      <div class="form-group">
+                        <label for="role">Role</label>
+                        <select class="form-control" id="role" [(ngModel)]="user.role" name="role" required>
+                          <option value="PROFESSIONAL">PROFESSIONAL</option>
+                          <option value="CLIENT">CLIENT</option>
+                          <option value="ADMIN">ADMIN</option>
+                        </select>
+                      </div>
+                      <!-- Password -->
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" class="form-control" [(ngModel)]="user.password" name="password" required />
+                      </div>
+                      <!-- File -->
+                      <div class="form-group">
+                        <label for="image">Profile Image</label>
+                        <input type="file" (change)="onFileSelected($event)" />
+                      </div>
+                      <div class="p-grid p-justify-end">
+                        <div class="p-col">
+                          <button type="button" class="btn btn-secondary" (click)="hideDialog()">Cancel</button>
+                          <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                      </div>
+                    </form>
+                  </p-dialog>
+            
+                <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
+            </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="../js/script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="../assets/demo/chart-area-demo.js"></script>
+        <script src="../assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="../js/datatables-simple-demo.js"></script>
+        <script src = "../assets/demo/chart-pie-demo.js"></script>
+        <script src = "../assets/demo/datatables-demo.js"></script>
+        
+    </body>
+</html>

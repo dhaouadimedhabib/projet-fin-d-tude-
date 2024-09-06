@@ -1,0 +1,94 @@
+<div class="container mt-5">
+    <div class="row align-items-start">
+        <!-- Colonne pour le titre -->
+        <div class="col-md-11">
+            <h1 >Reservation</h1>
+        </div>
+        <!-- Colonne pour le calendrier -->
+       
+    </div>
+
+    <div class="row mt-4">
+        <!-- Colonne pour les détails de l'utilisateur -->
+        <div class="col-md-3">
+            <h1 >PROFESSIONAL</h1>
+            <div class="card">
+                <img [src]="user?.image ? 'assets/' + user?.image : 'assets/5.jpg'" class="card-img-top" alt="Image Size 290x200">
+                <div class="card-body">
+                    <h5 class="card-title">{{ user?.email }}</h5>
+                    <p class="card-text">{{ user?.firstName }} {{ user?.lastName }}</p>
+                    <p class="card-text">Phone: {{ user?.numeroTel }}</p>
+                    <div style="text-align:right;">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h1> Date Disponibilités</h1>
+            <div class="card">
+                <ngb-datepicker [(ngModel)]="selectedDate" (dateSelect)="onDateSelection($event)"></ngb-datepicker>
+            </div>
+        </div>
+
+        <!-- Colonne pour les disponibilités -->
+        <div class="col-md-5">
+            <h1>Disponibilités</h1>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Disponibilités</h5>
+                <div *ngIf="filteredDisponibilites?.length === 0">
+                  <p>No availability found for the selected date.</p>
+                </div>
+                <div class="d-flex flex-wrap">
+                  <button
+                    *ngFor="let slot of filteredDisponibilites"
+                    type="button"
+                    class="btn btn-primary m-1"
+                    (click)="reserve(slot, addAppointmentModal)"
+                  >
+                    {{ slot }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
+<!-- HTML du modal pour ajouter un rendez-vous -->
+<ng-template #addAppointmentModal let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title">Ajouter un Rendez-vous</h5>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form (ngSubmit)="ajouterRendezVous(modal)">
+        <div class="mb-3">
+          <label for="date" class="form-label">Date</label>
+          <input type="date" class="form-control" id="date" [value]="formatDateForInput(newRendezVous.date)" name="date" required>
+        </div>
+        <div class="mb-3">
+          <label for="debut" class="form-label">Heure de Début</label>
+          <input type="time" class="form-control" id="debut" [(ngModel)]="debutTime" name="debut" required>
+        </div>
+        <div class="mb-3">
+          <label for="fin" class="form-label">Heure de Fin</label>
+          <input type="time" class="form-control" id="fin" [(ngModel)]="finTime" name="fin" required>
+        </div>
+        <div class="mb-3">
+          <label for="nomClient" class="form-label">Nom du Client</label>
+          <input type="text" class="form-control" id="nomClient" [(ngModel)]="newRendezVous.nomClient" name="nomClient" required>
+        </div>
+        <div class="mb-3">
+          <label for="statuts" class="form-label">Statut</label>
+          <select class="form-select" id="statuts" [(ngModel)]="newRendezVous.statuts" name="statuts" required>
+            <option value="ECHEC">ECHEC</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Annuler</button>
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </div>
+      </form>
+    </div>
+  </ng-template>

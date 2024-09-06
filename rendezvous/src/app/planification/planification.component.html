@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+         <link  href="/src/style.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+      
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="../index.html">Start Bootstrap</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4 vertical">
+                <!-- Icône de notification -->
+                <li class="nav-item">
+                    <button class="nav-link">
+                        <i class="fas fa-bell fa-fw"></i> <!-- Icône de notification -->
+                        <span class="badge bg-danger">3</span> <!-- Badge de notification -->
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" onclick="redirectToSettings()"><i class="fas fa-cog fa-fw"></i></button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" onclick="redirectToActivityLog()"><i class="fas fa-history fa-fw"></i></button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" onclick="logout()"><i class="bi bi-box-arrow-in-left"></i></button>
+                </li>
+                
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Interface</div>
+                            <a class="nav-link" routerLink="/plan" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Planning
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" routerLink="/listerdv" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Appoiment
+                            </a>
+                            <a class="nav-link" routerLink="/service" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-concierge-bell"></i></div>
+                                Service
+                            </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Authentication
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="login.html">Login</a>
+                                            <a class="nav-link" href="register.html">Register</a>
+                                            <a class="nav-link" href="password.html">Forgot Password</a>
+                                        </nav>
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        Error
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="401.html">401 Page</a>
+                                            <a class="nav-link" href="404.html">404 Page</a>
+                                            <a class="nav-link" href="500.html">500 Page</a>
+                                        </nav>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="sb-sidenav-menu-heading">Addons</div>
+                            <a class="nav-link" href="charts.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="tables.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a>
+                        </div>
+                    </div>
+                    
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+               <!-- Add Planning Button -->
+<div class="add-button-container">
+  <button pButton pRipple label="Add Planning" class="p-button-success p-button-sm custom-small-button" (click)="showAddDialog()"></button>
+</div>
+
+<br>
+
+<!-- Disponibilities List -->
+<div class="events-container">
+  <div class="events-row">
+    <div class="events-col" *ngFor="let disponibilite of disponibilites">
+      <p-card [style]="{ 'width': '95%' }">
+        <ng-template pTemplate="header">
+          <img alt="Card Image" src="../../assets/planning.jpg"/>
+        </ng-template>
+        <p>
+          Heure Début: {{ disponibilite.heureDebut1 }} - Heure Fin: {{ disponibilite.heureFin1 }}
+          <br>
+          Heure Début 2: {{ disponibilite.heureDebut2 }} - Heure Fin 2: {{ disponibilite.heureFin2 }}
+        </p>
+        <ng-template pTemplate="footer">
+          <div class="flex gap-3 mt-1">
+              <button pButton type="button" label="Edit" class="custom-green-button" icon="pi pi-pencil" (click)="showEditDialog(disponibilite)"></button>
+              <button pButton type="button" label="Delete" class="p-button-danger" icon="pi pi-trash" (click)="deleteDisponibilite(disponibilite.idDisponibilite!)"></button>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</div>
+
+<!-- Dialog for Adding/Editing Planning -->
+<p-dialog header="Add/Edit Planning" [(visible)]="displayDialog" [modal]="true" [style]="{width: '30vw', 'min-width': '300px'}">
+  <div class="p-fluid">
+    <div class="p-field">
+      <label for="heureDebut1">Heure Début 1</label>
+      <input id="heureDebut1" type="time" pInputText [(ngModel)]="disponibilite.heureDebut1"/>
+    </div>
+    <div class="p-field">
+      <label for="heureFin1">Heure Fin 1</label>
+      <input id="heureFin1" type="time" pInputText [(ngModel)]="disponibilite.heureFin1"/>
+    </div>
+    <div class="p-field">
+      <label for="heuredebut2">Heure Début 2</label>
+      <input id="heuredebut2" type="time" pInputText [(ngModel)]="disponibilite.heureDebut2"/>
+    </div>
+    <div class="p-field">
+      <label for="heureFin2">Heure Fin 2</label>
+      <input id="heureFin2" type="time" pInputText [(ngModel)]="disponibilite.heureFin2"/>
+    </div>
+    <div class="p-field">
+      <label for="date">date</label>
+      <input id="date" type="date" pInputText [(ngModel)]="disponibilite.date"/>
+    </div>
+  </div>
+  <p-footer>
+    <button pButton label="Save" icon="pi pi-check" (click)="saveDisponibilite()"></button>
+    <button pButton label="Cancel" icon="pi pi-times" class="p-button-secondary" (click)="hideDialog()"></button>
+  </p-footer>
+</p-dialog>
+
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="../js/script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="../assets/demo/chart-area-demo.js"></script>
+        <script src="../assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="../js/datatables-simple-demo.js"></script>
+        <script src = "../assets/demo/chart-pie-demo.js"></script>
+        <script src = "../assets/demo/datatables-demo.js"></script>
+        
+    </body>
+</html>

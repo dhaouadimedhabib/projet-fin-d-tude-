@@ -1,0 +1,107 @@
+<section class="page-section" id="services">
+    <!-- Section: Design Block -->
+    <section class="background-radial-gradient overflow-hidden">
+        <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+          <div class="row gx-lg-5 align-items-center mb-5">
+            <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+              <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                The best offer <br />
+                <span style="color: hsl(218, 81%, 75%)">for your business</span>
+              </h1>
+              <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Temporibus, expedita iusto veniam atque, magni tempora mollitia
+                dolorum consequatur nulla, neque debitis eos reprehenderit quasi
+                ab ipsum nisi dolorem modi. Quos?
+              </p>
+            </div>
+      
+            <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+              <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+              <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+      
+              <div class="card bg-glass">
+                <div class="card-body px-4 py-5 px-md-5">
+                    <form (submit)="register()" #signupForm="ngForm">
+                        <!-- Username -->
+                        <div class="form-outline mb-4" [ngClass]="{'has-danger': username?.invalid && username?.touched }">
+                            <input type="text" id="username" class="form-control" placeholder="Username" [(ngModel)]="user.username" name="username" pattern="[a-zA-Z0-9]+" title="Username must contain only letters and numbers (no spaces or special characters)" required #username="ngModel" />
+                            <div class="invalid-feedback" *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+                                Username must contain only letters and numbers (no spaces or special characters)
+                            </div>
+                        </div>
+                        
+                        <!-- First Name -->
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="form-outline">
+                                    <input type="text" id="firstName" class="form-control" placeholder="First name" [(ngModel)]="user.firstName" name="firstName" pattern="[a-zA-Z]+" title="First name must contain only letters (no spaces or special characters)" required #firstName="ngModel"/>
+                                    <div class="invalid-feedback" *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)">
+                                        First name must contain only letters (no spaces or special characters)
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Last Name -->
+                            <div class="col-md-6 mb-4">
+                                <div class="form-outline">
+                                    <input type="text" id="lastName" class="form-control" placeholder="Last name" [(ngModel)]="user.lastName" name="lastName" pattern="[a-zA-Z]+" title="Last name must contain only letters (no spaces or special characters)" required #lastName="ngModel"/>
+                                    <div class="invalid-feedback" *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)">
+                                        Last name must contain only letters (no spaces or special characters)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="form-outline mb-4">
+                            <input type="email" id="email" class="form-control" placeholder="Email address" [(ngModel)]="user.email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Enter a valid email address" required #email="ngModel" />
+                            <div class="invalid-feedback" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                                Please enter a valid email address
+                            </div>
+                        </div>
+                        
+                        <!-- Phone Number -->
+                        <div class="form-outline mb-4">
+                            <input type="tel" id="phoneNumber" class="form-control" placeholder="Phone number" [(ngModel)]="user.numeroTel" name="phoneNumber" pattern="[0-9]{10}" title="Phone number must contain 10 digits" required #phoneNumber="ngModel"/>
+                            <div class="invalid-feedback" *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)">
+                                Phone number must contain 10 digits
+                            </div>
+                        </div>
+                        
+                       
+                        
+                        <!-- Password -->
+                        <div class="form-outline mb-4">
+                            <input type="password" id="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" name="password" required pattern=".{6,}" title="Password must be at least 6 characters long" #password="ngModel"/>
+                            <div class="invalid-feedback" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+                                Password must be at least 6 characters long
+                            </div>
+                        </div>
+                        
+                        <!-- File -->
+                        <div class="form-outline mb-4">
+                            <input type="file" (change)="onFileSelected($event)">
+                        </div>
+                        
+                        <!-- Subscribe Checkbox -->
+                        <div class="form-check d-flex justify-content-center mb-4">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="subscribe" checked />
+                            <label class="form-check-label" for="subscribe">
+                                Subscribe to our newsletter
+                            </label>
+                        </div>
+                        
+                        <!-- Sign Up Button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-4">
+                            Sign up
+                        </button>
+                      
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Section: Design Block -->
+    </section>

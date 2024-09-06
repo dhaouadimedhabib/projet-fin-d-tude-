@@ -1,0 +1,26 @@
+<div class="container">
+  <br>
+  <h1 class="mt-3 mb-3">Professionnels</h1>
+
+  <div class="col-md-6 mb-3">
+    <input 
+      class="form-control" 
+      type="text" 
+      [(ngModel)]="searchText" 
+      (ngModelChange)="filterUsers()" 
+      placeholder="Search for data ..." 
+    />
+  </div>
+  
+  <div class="row mt-4">
+    <div class="col-md-3" *ngFor="let user of filteredUsers">
+      <div class="card mb-4 shadow-sm">
+        <img [src]="'assets/' + user.image" class="card-img-top" alt="{{ user.firstName }} {{ user.lastName }}" style="width: 290px; height: 200px;">
+        <div class="card-body">
+          <h3 class="card-title">{{ user.firstName }} {{ user.lastName }}</h3>
+          <a [routerLink]="['/reservation', user.userId]" class="btn btn-primary mt-3">Make an appointment</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

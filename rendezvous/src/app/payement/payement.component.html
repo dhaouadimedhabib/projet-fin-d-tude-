@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Interface</title>
+</head>
+<body>
+    <div class="payment-container">
+        <h1 class="payment-title">PAYMENT</h1>
+        <p class="payment-subtitle">ALL TRANSACTIONS ARE SECURE AND ENCRYPTED</p>
+        <!-- Bind the Angular form to the template -->
+        <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="payment-form">
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" placeholder="Email" required>
+
+            <!-- Stripe Card Element -->
+            <label for="card-element">Card Details</label>
+            <div id="card-element"></div> <!-- Stripe will mount the card input here -->
+
+            <div class="card-icons">
+                <img src="../../assets/img/logos/visa.png" alt="Visa" style="width: 50px;">
+                <img src="../../assets/img/logos/master.png" alt="MasterCard" style="width: 50px;">
+                <img src="../../assets/img/logos/amex.png" alt="Amex" style="width: 50px;">
+                <img src="../../assets/img/logos/jcb.png" alt="JCB" style="width: 50px;">
+            </div>
+
+            <button type="submit" class="pay-button" [disabled]="loading">PAY {{ montant ? montant + ' EUR' : '' }}</button>
+        </form>
+
+        <!-- Display error message if present -->
+        <p *ngIf="error" class="error-message">{{ error }}</p>
+    </div>
+</body>
+</html>

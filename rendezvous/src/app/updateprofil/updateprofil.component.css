@@ -1,0 +1,47 @@
+.main-content1 {
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa, #f8f9fa);
+   
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.mat-form-field {
+    width: 100%; /* Ajuster pour s'adapter à la largeur du conteneur ou définir une largeur fixe */
+  }
+  
+  /* Style pour ajuster la hauteur du champ de saisie */
+  .mat-form-field .mat-input-element {
+    height: 56px; /* Ajuster la hauteur selon vos besoins */
+    font-size: 1.2rem; /* Ajuster la taille de la police si nécessaire */
+  }
+  
+  /* S'assurer que le padding et les marges n'interfèrent pas */
+  .mat-form-field .mat-form-field-wrapper {
+    padding: 0; /* Ajuster si nécessaire */
+  }
+  .custom-form-field {
+    width: 100%; /* Ajuster à la largeur du conteneur */
+  }
+  
+  .custom-form-field .mat-input-element {
+    height: 56px; /* Ajuster la hauteur */
+    font-size: 1.2rem; /* Ajuster la taille de la police */
+  }
+  
+  .profile-card .row.align-items-center {
+    margin-top: 20px; /* Add spacing between image and text */
+  }
+  
+  .profile-card .avatar {
+    margin-bottom: 20px; /* Additional space below the avatar */
+  }
+  
+  .profile-card .text-custom {
+    margin-left: 75px; /* Additional spacing for text next to the image */
+  }
+  

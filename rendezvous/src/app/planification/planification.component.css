@@ -1,0 +1,44 @@
+.events-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.events-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px; /* Espace entre les cartes */
+}
+
+.events-col {
+  flex: 1 1 calc(33.33% - 20px); /* Ajuste la largeur des cartes pour 3 par ligne avec espacement */
+  box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  .events-col {
+    flex: 1 1 calc(50% - 20px); /* Ajuste pour 2 par ligne sur des écrans plus petits */
+  }
+}
+
+@media (max-width: 768px) {
+  .events-col {
+    flex: 1 1 calc(100% - 20px); /* Ajuste pour 1 par ligne sur des écrans très petits */
+  }
+}
+.custom-small-button {
+  width: auto; /* Ajuste la largeur du bouton pour s'adapter à son contenu */
+  display: inline-block; /* Empêche le bouton de prendre toute la largeur du conteneur parent */
+  padding: 0.25rem 0.5rem; /* Ajuste le padding pour rendre le bouton plus petit */
+  font-size: 0.75rem; /* Ajuste la taille de la police */
+}
+.custom-green-button {
+  background-color: hsl(29, 92%, 52%) !important;
+  border-color: hsl(29, 92%, 52%) !important;
+  color: white !important;
+}
+.custom-red-button {
+  background-color: red !important;
+  border-color: red !important;
+  color: white !important;
+}
