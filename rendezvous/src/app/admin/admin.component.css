@@ -1,0 +1,4 @@
+.navbar-logo {
+    width: 50px; /* Largeur fixe pour un petit logo */
+    height: auto; /* Conserve les proportions de l'image */
+  }

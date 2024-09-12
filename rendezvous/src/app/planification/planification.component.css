@@ -1,6 +1,8 @@
 .events-container {
   display: flex;
   flex-wrap: wrap;
+  margin-left: 50px; /* Ajustez cette valeur selon la largeur de votre sidebar */
+
 }
 
 .events-row {
@@ -41,4 +43,8 @@
   background-color: red !important;
   border-color: red !important;
   color: white !important;
+}
+.navbar-logo {
+  width: 50px; /* Largeur fixe pour un petit logo */
+  height: auto; /* Conserve les proportions de l'image */
 }

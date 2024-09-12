@@ -16,8 +16,9 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="../index.html">Start Bootstrap</a>
-            <!-- Sidebar Toggle-->
+            <a class="navbar-brand ps-3" href="../index.html">
+              <img src="../assets/img/942759.png" alt="Logo" class="navbar-logo"/>
+            </a>            <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
@@ -54,7 +55,6 @@
                       <button type="button" pButton icon="pi pi-angle-left" label="Previous" (click)="loadPreviousPage()" [disabled]="currentPage === 0"></button>
                       <button type="button" pButton icon="pi pi-angle-right" label="Next" (click)="loadNextPage()" [disabled]="currentPage >= totalPages - 1"></button>
                     </div>
-                    <button type="button" pButton icon="pi pi-times" label="Close" (click)="displayNotificationDialog = false"></button>
                   </ng-template>
                 </p-dialog>
                 <li class="nav-item">

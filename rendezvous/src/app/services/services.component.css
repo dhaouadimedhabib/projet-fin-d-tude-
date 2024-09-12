@@ -68,3 +68,7 @@
   .btn-secondary:hover {
     background-color: #5a6268;
   }
+  .navbar-logo {
+    width: 50px; /* Largeur fixe pour un petit logo */
+    height: auto; /* Conserve les proportions de l'image */
+  }
