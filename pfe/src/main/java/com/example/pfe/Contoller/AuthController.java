@@ -159,56 +159,12 @@ public class AuthController {
 
 
 
-    public AuthController(GoogleIdTokenVerifier tokenVerifier,
-                          GoogleAuthorizationCodeFlow googleAuthorizationCodeFlow) {
-        this.tokenVerifier = tokenVerifier;
-        this.googleAuthorizationCodeFlow = googleAuthorizationCodeFlow;
-    }
-    @GetMapping("/token/{token}")
-    @ResponseBody
-    public boolean authenticateByJavascriptClientToken(@PathVariable String token) {
-        // TODO add token exchange logic here!
-        try {
-            return tokenVerifier.verify(token).getPayload().getEmailVerified();
-        } catch (Exception e) {
-            return false;
-        }
-    }
 
-    @GetMapping("/redirect")
-    public RedirectView redirectToGoogle() {
-        GoogleAuthorizationCodeRequestUrl authUrl =
-                googleAuthorizationCodeFlow.newAuthorizationUrl();
-        authUrl.setRedirectUri("http://localhost:8080/auth/callback");
-        String url = authUrl.build();
-        return new RedirectView(url);
-    }
 
-    @GetMapping("/callback")
-    public RedirectView authCallback(@RequestParam String code,
-                                     HttpServletRequest servletRequest) throws IOException {
-        GoogleAuthorizationCodeTokenRequest tokenRequest =
-                googleAuthorizationCodeFlow.newTokenRequest(code);
-        tokenRequest.setRedirectUri("http://localhost:8084/auth/callback");
-        GoogleTokenResponse tokenResponse = tokenRequest.execute();
-        GoogleIdToken token = tokenResponse.parseIdToken();
-        token.getPayload().getEmail();
 
-        // TODO replace session cookie with your your token exchange logic here
-        setSessionCookie(servletRequest, tokenResponse);
 
-        return new RedirectView("/");
-    }
 
-    private void setSessionCookie(HttpServletRequest request, GoogleTokenResponse tokenResponse) {
 
-        // TODO Lookup credentials based on google token
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-                "email", "credentials", new ArrayList<>());
-        SecurityContext context = SecurityContextHolder.getContext();
-        context.setAuthentication(token);
-        HttpSession session = request.getSession(true);
-        session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, context);
-    }
+
 
 }

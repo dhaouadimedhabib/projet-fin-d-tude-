@@ -7,7 +7,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @SpringBootApplication
-@PropertySource(value = "google-client.properties")
 @EnableWebSecurity
 public class PfeApplication implements CommandLineRunner {
 
