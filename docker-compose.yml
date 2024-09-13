@@ -10,7 +10,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: ""  # Comme spring.datasource.password est vide, laissez ce champ vide
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - db:/var/lib/mysql
 
