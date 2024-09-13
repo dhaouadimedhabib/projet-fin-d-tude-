@@ -1,0 +1,41 @@
+version: "3.8"
+services:
+  mysql:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  spring-boot-app:
+    depends_on:
+      - mysql
+    image: dhaouadi1515/gestion-de-rendezvous:latest
+    restart: on-failure
+    environment:
+      SPRING_APPLICATION_JSON: '{
+                 "spring.datasource.url"  : "jdbc:mysql://mysqldb :3306/techmaster2?createDatabaseIfNotExist=true",
+                 "spring.datasource.username" : "root",
+                 "spring.jpa.show-sql" : "true",
+                 "spring.jpa.hibernate.ddl-auto" : "update",
+                 "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQL5InnoDBDialect"
+               }'
+    ports:
+      - "8084:8084"
+    stdin_open: true
+    tty: true
+
+  angular-app:
+    image: dhaouadi1515/gestion-de-rendezvous-angular:latest
+    restart: on-failure
+    ports:
+      - "80:80"
+
+volumes:
+  db:
