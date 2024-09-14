@@ -5,10 +5,11 @@ services:
     image: mysql:5.7
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: ""  # Comme spring.datasource.password est vide, laissez ce champ vide
+      MYSQL_ROOT_PASSWORD: ""  # Laisse vide, mais permets-le explicitement
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"  # Permettre les mots de passe vides
       MYSQL_DATABASE: techmaster2
       MYSQL_USER: root
-      MYSQL_PASSWORD: ""  # Comme spring.datasource.password est vide, laissez ce champ vide
+      MYSQL_PASSWORD: ""  # Mot de passe vide pour l'utilisateur root
     ports:
       - "3306:3306"
     volumes:
