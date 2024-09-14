@@ -10,14 +10,14 @@ import { Router } from '@angular/router';
 })
 export class UserService {
 
-  private baseurl_register = 'http://localhost:8084/api/auth/signup';
-  private baseUrl_auth = 'http://localhost:8084/api/auth';
-  private apiUrl = 'http://localhost:8084/api/user';
-  private baseUrl = 'http://localhost:8084/api/user'; // Base URL for user-related endpoints
-  private apiUr2 = 'http://localhost:8084/api/user/professionnels';
-  private changeurl = 'http://localhost:8084/api/user/forgot-password';
-  private reseturl = 'http://localhost:8084/api/user';
-  private Url = 'http://localhost:8084/api/auth';
+  private baseurl_register = 'http://192.168.141.198:8084/api/auth/signup';
+  private baseUrl_auth = 'http://192.168.141.198:8084/api/auth';
+  private apiUrl = 'http://192.168.141.198:8084/api/user';
+  private baseUrl = 'http://192.168.141.198:8084/api/user'; // Base URL for user-related endpoints
+  private apiUr2 = 'http://192.168.141.198:8084/api/user/professionnels';
+  private changeurl = 'http://192.168.141.198:8084/api/user/forgot-password';
+  private reseturl = 'http://192.168.141.198:8084/api/user';
+  private Url = 'http://192.168.141.198:8084/api/auth';
   constructor(private http: HttpClient, private router : Router) { }
   
   register(User: any): Observable<any> {
