@@ -8,7 +8,7 @@ import { Reclamation } from '../modele/reclamation';
 })
 export class ReclamationService {
 
-  private baseUrl = 'http://localhost:8084/api/reclamation';
+  private baseUrl = '192.168.141.198:8084/api/reclamation';
 
   constructor(private http: HttpClient) {}
 
