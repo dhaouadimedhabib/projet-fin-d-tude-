@@ -7,9 +7,9 @@ import { Disponibilite } from '../modele/Disponibilite';
   providedIn: 'root'
 })
 export class ProfessionnelService {
-  private baseUrl = 'http://localhost:8084/api/Professionnel';
-  private apiUrl = 'http://localhost:8084/api/Disponibilite'; // Remplacez par votre URL d'API
-  private baseUrl1 = 'http://localhost:8084/api/Disponibilite';
+  private baseUrl = 'http://192.168.141.198:8084/api/Professionnel';
+  private apiUrl = 'http://192.168.141.198:8084/api/Disponibilite'; // Remplacez par votre URL d'API
+  private baseUrl1 = 'http://192.168.141.198:8084/api/Disponibilite';
 
   constructor(private http: HttpClient) { }
 
