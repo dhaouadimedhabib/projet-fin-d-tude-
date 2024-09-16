@@ -5,7 +5,7 @@ FROM cirrusci/flutter:stable as build
 WORKDIR /app
 
 # Copier le projet Flutter dans le conteneur
-COPY mobile/ ./
+COPY . ./
 
 # Télécharger les dépendances Flutter
 RUN flutter pub get
