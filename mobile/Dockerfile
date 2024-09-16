@@ -1,11 +1,28 @@
-# Étape 1 : Construction de l'application Flutter
-FROM cirrusci/flutter:stable as build
+# Étape 1 : Image de base légère avec Flutter
+FROM debian:bullseye-slim AS build
 
-# Définir le répertoire de travail dans le conteneur
+# Installer les dépendances requises
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    git \
+    unzip \
+    xz-utils \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Télécharger Flutter SDK
+WORKDIR /opt
+RUN git clone https://github.com/flutter/flutter.git -b stable --depth 1
+
+# Ajouter Flutter au PATH
+ENV PATH="/opt/flutter/bin:/opt/flutter/bin/cache/dart-sdk/bin:${PATH}"
+
+# Vérifier l'installation de Flutter
+RUN flutter doctor
+
+# Configurer le répertoire de travail et copier les sources Flutter
 WORKDIR /app
-
-# Copier le projet Flutter dans le conteneur
-COPY . ./
+COPY . .
 
 # Télécharger les dépendances Flutter
 RUN flutter pub get
@@ -20,7 +37,7 @@ FROM nginx:alpine
 COPY --from=build /app/build/web /usr/share/nginx/html
 
 # Exposer le port 80 pour accéder à l'application Flutter
-EXPOSE 8081
+EXPOSE 8089
 
 # Démarrer le serveur Nginx
 CMD ["nginx", "-g", "daemon off;"]
