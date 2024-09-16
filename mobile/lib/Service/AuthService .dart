@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class AuthService {
-  final String baseUrl = 'http://10.0.2.2:8084/api/auth'; // Replace with your API base URL
+  final String baseUrl = 'http://192.168.141.198:8084/api/auth'; // Replace with your API base URL
 
   Future<JwtResponse> signIn(String username, String password) async {
     final url = Uri.parse('$baseUrl/signin');
