@@ -20,7 +20,7 @@ FROM nginx:alpine
 COPY --from=build /app/build/web /usr/share/nginx/html
 
 # Exposer le port 80 pour accéder à l'application Flutter
-EXPOSE 80
+EXPOSE 8081
 
 # Démarrer le serveur Nginx
 CMD ["nginx", "-g", "daemon off;"]
