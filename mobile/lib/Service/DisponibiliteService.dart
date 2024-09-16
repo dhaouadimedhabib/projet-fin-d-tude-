@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class DisponibiliteService {
-  final String apiUrl = "http://10.0.2.2:8084/api/Disponibilite/by-date";
+  final String apiUrl = "http://192.168.141.198:8084/api/Disponibilite/by-date";
 
   Future<List<String>> fetchDisponibilitesByDateAndProfessionnel(int professionnelId, String date) async {
     final response = await http.get(Uri.parse('$apiUrl/$professionnelId/$date'));
