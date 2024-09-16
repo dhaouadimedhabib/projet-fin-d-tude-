@@ -38,5 +38,11 @@ services:
     ports:
       - "80:80"
 
+  flutter-app:
+    image: dhaouadi1515/gestion-de-rendezvous-flutter:latest
+    restart: on-failure
+    ports:
+      - "8081:80"
+
 volumes:
   db:
