@@ -1,1 +1,20 @@
-
+# spring-boot-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot
+  template:
+    metadata:
+      labels:
+        app: spring-boot
+    spec:
+      containers:
+        - name: spring-boot-container
+          image: dhaouadi1515/gestion-de-rendezvous:latest
+          ports:
+            - containerPort: 8089
