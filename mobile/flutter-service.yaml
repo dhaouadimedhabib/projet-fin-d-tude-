@@ -1,1 +1,13 @@
-
+# flutter-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: flutter-service
+spec:
+  selector:
+    app: flutter
+  ports:
+    - protocol: TCP
+      port: 8089
+      targetPort: 8089
+  type: LoadBalancer
