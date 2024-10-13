@@ -1,1 +1,13 @@
-
+# angular-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: angular-service
+spec:
+  selector:
+    app: angular
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
