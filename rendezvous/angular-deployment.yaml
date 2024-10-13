@@ -1,1 +1,20 @@
-
+# angular-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: angular
+  template:
+    metadata:
+      labels:
+        app: angular
+    spec:
+      containers:
+        - name: angular-container
+          image: dhaouadi1515/gestion-de-rendezvous-angular:latest
+          ports:
+            - containerPort: 80
