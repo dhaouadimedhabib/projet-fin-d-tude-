@@ -8,6 +8,6 @@ spec:
     app: spring-boot
   ports:
     - protocol: TCP
-      port: 8089
-      targetPort: 8089
+      port: 8084
+      targetPort: 8084
   type: LoadBalancer
