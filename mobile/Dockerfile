@@ -25,7 +25,7 @@ WORKDIR /app
 COPY . .
 
 # Télécharger les dépendances Flutter
-flutter pub get --verbose
+RUN flutter pub get --verbose
 
 # Construire l'application Flutter pour le web
 RUN flutter build web
