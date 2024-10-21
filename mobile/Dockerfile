@@ -24,6 +24,9 @@ RUN flutter doctor
 WORKDIR /app
 COPY . .
 
+# Nettoyer l'environnement avant de télécharger les dépendances
+RUN flutter clean
+
 # Télécharger les dépendances Flutter
 RUN flutter pub get --verbose
 
