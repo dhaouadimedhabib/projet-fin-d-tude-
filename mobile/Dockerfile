@@ -17,6 +17,13 @@ RUN git clone https://github.com/flutter/flutter.git -b stable --depth 1
 # Ajouter Flutter au PATH
 ENV PATH="/opt/flutter/bin:/opt/flutter/bin/cache/dart-sdk/bin:${PATH}"
 
+# Désactiver l'avertissement Flutter pour root
+ENV FLUTTER_SUPPRESS_ANALYTICS=true
+
+# Spécifier des miroirs pour éviter les problèmes de connectivité
+ENV PUB_HOSTED_URL=https://pub.flutter-io.cn
+ENV FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+
 # Vérifier l'installation de Flutter
 RUN flutter doctor
 
