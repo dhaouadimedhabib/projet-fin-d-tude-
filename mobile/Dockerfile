@@ -2,7 +2,7 @@
 FROM debian:bullseye-slim AS build
 
 # Installer les dépendances requises
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get clean && apt-get update && apt-get install -y --no-install-recommends \
     curl \
     git \
     unzip \
