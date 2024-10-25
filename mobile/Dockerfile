@@ -28,7 +28,7 @@ COPY . .
 RUN flutter pub get
 
 # Construire l'application Flutter pour le web
-RUN flutter build web
+#RUN flutter build web
 
 # Étape 2 : Serveur Nginx pour héberger l'application Flutter Web
 FROM nginx:alpine
