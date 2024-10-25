@@ -17,8 +17,8 @@ RUN git clone https://github.com/flutter/flutter.git -b stable --depth 1
 # Ajouter Flutter au PATH
 ENV PATH="/opt/flutter/bin:/opt/flutter/bin/cache/dart-sdk/bin:${PATH}"
 
-# Vérifier l'installation de Flutter et configurer les permissions du cache
-RUN flutter doctor && flutter precache --web && chmod -R a+w /opt/flutter/bin/cache
+# Vérifier l'installation de Flutter
+RUN flutter doctor
 
 # Configurer le répertoire de travail et copier les sources Flutter
 WORKDIR /app
