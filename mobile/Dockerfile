@@ -1,8 +1,8 @@
 # Étape 1 : Image de base légère avec Flutter
-FROM debian:latest AS build
+FROM debian:bullseye-slim AS build
 
 # Installer les dépendances requises
-RUN apt-get clean && apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     git \
     unzip \
@@ -36,7 +36,7 @@ FROM nginx:alpine
 # Copier les fichiers de l'application Flutter Web construite à partir de l'étape 1
 COPY --from=build /app/build/web /usr/share/nginx/html
 
-# Exposer le port 8089 pour accéder à l'application Flutter
+# Exposer le port 80 pour accéder à l'application Flutter
 EXPOSE 8089
 
 # Démarrer le serveur Nginx
