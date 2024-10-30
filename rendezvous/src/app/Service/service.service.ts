@@ -8,7 +8,7 @@ import { Service } from '../modele/Services';
   providedIn: 'root'
 })
 export class ServiceService {
-  private apiUrl = 'http://192.168.141.198:8084/api/services';  // URL de base pour les services
+  private apiUrl = 'http://192.168.56.10:8084/api/services';  // URL de base pour les services
 
   constructor(private http: HttpClient) { }
 
