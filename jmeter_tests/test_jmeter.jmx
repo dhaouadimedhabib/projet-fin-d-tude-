@@ -1,1 +1,27 @@
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+    <hashTree>
+        <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+            <stringProp name="TestPlan.name">Test Plan</stringProp>
+            <elementProp name="TestPlan.userDefinedVariables" elementType="Arguments" guiclass="UserDefinedVariablesGui" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+        </TestPlan>
+        <hashTree/>
+        <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+            <stringProp name="ThreadGroup.num_threads">1</stringProp>
+            <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+            <stringProp name="ThreadGroup.loop_count">1</stringProp>
+        </ThreadGroup>
+        <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+                <stringProp name="HTTPSampler.domain">example.com</stringProp>
+                <stringProp name="HTTPSampler.port">80</stringProp>
+                <stringProp name="HTTPSampler.protocol">http</stringProp>
+                <stringProp name="HTTPSampler.path">/</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+        </hashTree>
+    </hashTree>
+</jmeterTestPlan>
 
