@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:rendezvous/modele/user.dart';
 
 class UserService {
-  final String baseUrl = 'http://192.168.141.198:8084';
+  final String baseUrl = 'http://192.168.56.10:8084';
 
   Future<List<User>> fetchAllProfessionnels() async {
     final uri = Uri.parse('$baseUrl/api/user/professionnels');
