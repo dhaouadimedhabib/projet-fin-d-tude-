@@ -6,22 +6,113 @@
                 <collectionProp name="Arguments.arguments"/>
             </elementProp>
         </TestPlan>
-        <hashTree/>
-        <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
-            <stringProp name="ThreadGroup.num_threads">1</stringProp>
-            <stringProp name="ThreadGroup.ramp_time">1</stringProp>
-            <stringProp name="ThreadGroup.loop_count">1</stringProp>
-        </ThreadGroup>
         <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
-                <stringProp name="HTTPSampler.domain">example.com</stringProp>
-                <stringProp name="HTTPSampler.port">80</stringProp>
-                <stringProp name="HTTPSampler.protocol">http</stringProp>
-                <stringProp name="HTTPSampler.path">/</stringProp>
-                <stringProp name="HTTPSampler.method">GET</stringProp>
-            </HTTPSamplerProxy>
-            <hashTree/>
-        </hashTree>
+            <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+                <stringProp name="ThreadGroup.num_threads">1</stringProp>
+                <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+                <stringProp name="ThreadGroup.loop_count">1</stringProp>
+            </ThreadGroup>
+            <hashTree>
+
+                <!-- GET /api/notifications -->
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/notifications" enabled="true">
+                    <stringProp name="HTTPSampler.domain">192.168.56.10</stringProp>
+                    <stringProp name="HTTPSampler.port">8084</stringProp>
+                    <stringProp name="HTTPSampler.protocol">http</stringProp>
+                    <stringProp name="HTTPSampler.path">/api/notifications</stringProp>
+                    <stringProp name="HTTPSampler.method">GET</stringProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+
+                <!-- POST /api/notifications -->
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /api/notifications" enabled="true">
+                    <stringProp name="HTTPSampler.domain">192.168.56.10</stringProp>
+                    <stringProp name="HTTPSampler.port">8084</stringProp>
+                    <stringProp name="HTTPSampler.protocol">http</stringProp>
+                    <stringProp name="HTTPSampler.path">/api/notifications</stringProp>
+                    <stringProp name="HTTPSampler.method">POST</stringProp>
+                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                        <collectionProp name="Arguments.arguments">
+                            <elementProp name="" elementType="HTTPArgument">
+                                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                                <stringProp name="Argument.value">{"title": "New Notification", "message": "Testing POST request."}</stringProp>
+                                <stringProp name="Argument.metadata">=</stringProp>
+                                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                                <stringProp name="Argument.name"></stringProp>
+                            </elementProp>
+                        </collectionProp>
+                    </elementProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+
+                <!-- GET /api/users -->
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/users" enabled="true">
+                    <stringProp name="HTTPSampler.domain">192.168.56.10</stringProp>
+                    <stringProp name="HTTPSampler.port">8084</stringProp>
+                    <stringProp name="HTTPSampler.protocol">http</stringProp>
+                    <stringProp name="HTTPSampler.path">/api/users</stringProp>
+                    <stringProp name="HTTPSampler.method">GET</stringProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+
+                <!-- POST /api/users -->
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /api/users" enabled="true">
+                    <stringProp name="HTTPSampler.domain">192.168.56.10</stringProp>
+                    <stringProp name="HTTPSampler.port">8084</stringProp>
+                    <stringProp name="HTTPSampler.protocol">http</stringProp>
+                    <stringProp name="HTTPSampler.path">/api/users</stringProp>
+                    <stringProp name="HTTPSampler.method">POST</stringProp>
+                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                        <collectionProp name="Arguments.arguments">
+                            <elementProp name="" elementType="HTTPArgument">
+                                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                                <stringProp name="Argument.value">{"username": "newuser", "email": "user@example.com"}</stringProp>
+                                <stringProp name="Argument.metadata">=</stringProp>
+                                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                                <stringProp name="Argument.name"></stringProp>
+                            </elementProp>
+                        </collectionProp>
+                    </elementProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+
+                <!-- PUT /api/users/{id} -->
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PUT /api/users/1" enabled="true">
+                    <stringProp name="HTTPSampler.domain">192.168.56.10</stringProp>
+                    <stringProp name="HTTPSampler.port">8084</stringProp>
+                    <stringProp name="HTTPSampler.protocol">http</stringProp>
+                    <stringProp name="HTTPSampler.path">/api/users/1</stringProp>
+                    <stringProp name="HTTPSampler.method">PUT</stringProp>
+                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                        <collectionProp name="Arguments.arguments">
+                            <elementProp name="" elementType="HTTPArgument">
+                                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                                <stringProp name="Argument.value">{"username": "updateduser", "email": "updated@example.com"}</stringProp>
+                                <stringProp name="Argument.metadata">=</stringProp>
+                                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                                <stringProp name="Argument.name"></stringProp>
+                            </elementProp>
+                        </collectionProp>
+                    </elementProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+
+                <!-- DELETE /api/users/{id} -->
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DELETE /api/users/1" enabled="true">
+                    <stringProp name="HTTPSampler.domain">192.168.56.10</stringProp>
+                    <stringProp name="HTTPSampler.port">8084</stringProp>
+                    <stringProp name="HTTPSampler.protocol">http</stringProp>
+                    <stringProp name="HTTPSampler.path">/api/users/1</stringProp>
+                    <stringProp name="HTTPSampler.method">DELETE</stringProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+
+            </hashTree>
+        </ThreadGroup>
     </hashTree>
 </jmeterTestPlan>
+
 
