@@ -1,5 +1,6 @@
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
     <hashTree>
+        <!-- Début du Plan de Test -->
         <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
             <stringProp name="TestPlan.name">Test Plan</stringProp>
             <elementProp name="TestPlan.userDefinedVariables" elementType="Arguments" guiclass="UserDefinedVariablesGui" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -7,6 +8,8 @@
             </elementProp>
         </TestPlan>
         <hashTree>
+
+            <!-- Groupe de Threads (utilisateurs virtuels) -->
             <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
                 <stringProp name="ThreadGroup.num_threads">1</stringProp>
                 <stringProp name="ThreadGroup.ramp_time">1</stringProp>
@@ -26,7 +29,7 @@
 
                 <!-- Simple Data Writer pour capturer les résultats dans results.jtl -->
                 <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="true">
-                    <stringProp name="filename">${WORKSPACE}/jmeter_tests/results.jtl</stringProp>
+                    <stringProp name="filename">/home/vagrant/projet-fin-d-tude/jmeter_tests/results.jtl</stringProp>
                     <boolProp name="ResultCollector.error_logging">false</boolProp>
                     <objProp>
                         <name>saveConfig</name>
@@ -41,18 +44,6 @@
                             <boolProp name="message">true</boolProp>
                             <boolProp name="threadName">true</boolProp>
                             <boolProp name="dataType">true</boolProp>
-                            <boolProp name="encoding">false</boolProp>
-                            <boolProp name="assertions">true</boolProp>
-                            <boolProp name="subresults">false</boolProp>
-                            <boolProp name="responseData">false</boolProp>
-                            <boolProp name="samplerData">false</boolProp>
-                            <boolProp name="xml">true</boolProp>
-                            <boolProp name="fieldNames">true</boolProp>
-                            <boolProp name="responseHeaders">false</boolProp>
-                            <boolProp name="requestHeaders">false</boolProp>
-                            <boolProp name="responseDataOnError">false</boolProp>
-                            <boolProp name="saveAssertionResultsFailureMessage">true</boolProp>
-                            <boolProp name="assertionsResultsToSave">0</boolProp>
                             <boolProp name="bytes">true</boolProp>
                             <boolProp name="sentBytes">true</boolProp>
                             <boolProp name="url">true</boolProp>
