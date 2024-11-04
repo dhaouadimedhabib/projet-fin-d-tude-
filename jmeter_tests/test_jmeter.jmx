@@ -14,8 +14,7 @@
             </ThreadGroup>
             <hashTree>
 
-                <!-- Inclure ici chaque HTTPSamplerProxy et leur hashTree comme enfants -->
-                <!-- Exemple du GET /api/notifications -->
+                <!-- Requête HTTP GET pour /api/notifications -->
                 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/notifications" enabled="true">
                     <stringProp name="HTTPSampler.domain">192.168.56.10</stringProp>
                     <stringProp name="HTTPSampler.port">8084</stringProp>
@@ -25,7 +24,46 @@
                 </HTTPSamplerProxy>
                 <hashTree/>
 
-                <!-- Autres requêtes comme POST, PUT, DELETE suivent la même structure -->
+                <!-- Simple Data Writer pour capturer les résultats dans results.jtl -->
+                <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="true">
+                    <stringProp name="filename">${WORKSPACE}/jmeter_tests/results.jtl</stringProp>
+                    <boolProp name="ResultCollector.error_logging">false</boolProp>
+                    <objProp>
+                        <name>saveConfig</name>
+                        <value class="SampleSaveConfiguration">
+                            <boolProp name="xml">true</boolProp>
+                            <boolProp name="time">true</boolProp>
+                            <boolProp name="latency">true</boolProp>
+                            <boolProp name="timestamp">true</boolProp>
+                            <boolProp name="success">true</boolProp>
+                            <boolProp name="label">true</boolProp>
+                            <boolProp name="code">true</boolProp>
+                            <boolProp name="message">true</boolProp>
+                            <boolProp name="threadName">true</boolProp>
+                            <boolProp name="dataType">true</boolProp>
+                            <boolProp name="encoding">false</boolProp>
+                            <boolProp name="assertions">true</boolProp>
+                            <boolProp name="subresults">false</boolProp>
+                            <boolProp name="responseData">false</boolProp>
+                            <boolProp name="samplerData">false</boolProp>
+                            <boolProp name="xml">true</boolProp>
+                            <boolProp name="fieldNames">true</boolProp>
+                            <boolProp name="responseHeaders">false</boolProp>
+                            <boolProp name="requestHeaders">false</boolProp>
+                            <boolProp name="responseDataOnError">false</boolProp>
+                            <boolProp name="saveAssertionResultsFailureMessage">true</boolProp>
+                            <boolProp name="assertionsResultsToSave">0</boolProp>
+                            <boolProp name="bytes">true</boolProp>
+                            <boolProp name="sentBytes">true</boolProp>
+                            <boolProp name="url">true</boolProp>
+                            <boolProp name="threadCounts">true</boolProp>
+                            <boolProp name="idleTime">true</boolProp>
+                            <boolProp name="connectTime">true</boolProp>
+                        </value>
+                    </objProp>
+                </ResultCollector>
+                <hashTree/>
+
             </hashTree>
         </hashTree>
     </hashTree>
